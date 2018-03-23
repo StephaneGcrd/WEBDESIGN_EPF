@@ -1,4 +1,4 @@
-
+// Auteurs: Boris Boeri & Guichard Stéphane 
 var slider = document.getElementById('myRange');
 var slider2 = document.getElementById('myRange_deux');
 

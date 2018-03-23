@@ -1,3 +1,4 @@
+//Auteurs: Boris Boeri & Guichard Stéphane 
 (function() {
 	//definition du module angular
 		angular.module('liste',['ngAnimate']);
