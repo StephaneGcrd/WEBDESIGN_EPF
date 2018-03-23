@@ -9,9 +9,9 @@ Le but de ce site est d'afficher des données relatives aux lieux de tournage à
 
 ## **Fonctionalités implémentées**
 
-* **ng-app et ng-controlleur**
+* **ng-app et ng-controller**
 
-Ces deux directives permettent d'indiquer que l'application angular et le controlleur vont s'appliquer sur le html écrit dans la div dans lequel elles sont appelées.
+Ces deux directives permettent d'indiquer que l'application angular et le controller vont s'appliquer sur le html écrit dans la div dans lequel elles sont appelées.
 
 * **ng-if**
 
