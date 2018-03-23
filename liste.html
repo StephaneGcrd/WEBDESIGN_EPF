@@ -1,0 +1,123 @@
+<!DOCTYPE html >
+<html ng-app="liste">
+
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script> <!-- load angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js"></script>
+    <script type="text/javascript" src="./vendor/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' href="./css/styles.css" />
+
+    <script type="text/javascript" src="./js/script.js"></script>
+    <title>GeograFilm</title>
+  </head>
+
+  <body ng-controller="listeViewer as listev" ng-init="start = 0; end = 15;numero_page=1;">
+
+
+    <!-- sidenav -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="">GeograFilm</a>
+        <a id="rowhead_nav"></a>
+        <a href="/film_data/index.html">Carte</a>
+        <a href="/film_data/liste.html">Liste</a>
+      </div>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-md">
+      <button class="navbar-toggler" type="button" onclick="openNav()">
+        <span class="navbar-toggler-icon"><img src="images/grid-world.svg" class="navlogo" alt="Responsive image"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="/film_data/index.html"><img src="images/grid-world.svg" class="navlogo" alt="Responsive image">GeograFilm</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/film_data/index.html"><div class="navbt"><div class="navbtint">Carte</div> </div><span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/film_data/liste.html"><div class="navbt"><div class="navbtint">Liste</div> </div></a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control my-1 mr-sm-1 mr-md-3" ng-model="searchText" type="text" placeholder="Rechercher...">
+      </form>
+
+      <a class="nav-link" ng-click="bool=!bool" href="">
+        <div class="navbt">
+          <div class="navbtint">Filtres</div>
+        </div>
+      </a>
+    </nav>
+
+    <!--espace occupé par le header ( a definir car header fixe )-->
+    <div class="espace_haut"></div>
+
+    <!-- Main Content -->
+
+    <!-- ligne qui contient les filtres ( ng-if : affichée que si bool = true ) -->
+    <div class="row filters" ng-if="bool">
+      <div class="col-2 col-md-2 col-lg-1 filter_bt" ng-click="listev.order_by='fields.titre'" >
+        Titre</div>
+      <div class="col-3 col-md-2 col-lg-2 filter_bt" ng-click="listev.order_by='fields.realisateur'" >
+        Auteur </div>
+      <div class="col-2 col-md-2 col-lg-1 filter_bt" ng-click="listev.order_by='fields.date_debut'" >
+        Arr.</div>
+      <div class="col-2 col-md-2 col-lg-1 filter_bt" ng-click="listev.order_by='fields.ardt'" >
+        Date</div>
+      <div class="col-3 col-md-0"></div>
+    </div>
+
+
+    <!-- en tete du tableau contenant les films -->
+    <div class="row tabhead">
+      <div class="col-5 col-md-5 col-lg-4 "><p ><img src="./images/checkbox.svg" class="tablogo" alt="Responsive image">Titre</p></div>
+      <div class="col-4 col-md-4 col-lg-4"><p><img src="./images/man-user.svg" class="tablogo" alt="Responsive image">Réalisateur</p></div>
+      <div class="col-3 col-md-3 col-lg-4"><p><img src="./images/clock.svg" class="tablogo" alt="Responsive image">Date</p></div>
+    </div>
+
+    <!-- Tableau contenant liste des films -->
+    <div class="container_films" >
+            <div class="row_el" >
+                <!-- on utilise ng-repeat pour afficher chaque element de la liste -->
+                <!-- ng-class permet de changer le css d'une case si le bouton favori est coché -->
+                <!-- On applique différents filtres, dont le filtre custom startFrom qui permet d'afficher les elements page par page -->
+                <div ng-class="{favoris_active:fav_check}" class="item" ng-repeat="films in listev.list | filter:searchText | orderBy: listev.order_by | startFrom:start:end " >
+                  <div class="row favoris">
+                    Favoris<input type="checkbox" ng-model="fav_check">
+                  </div>
+                  <div  class="row" >
+          					<div  class="col-5 col-md-5 col-lg-4 tab_content"><p>{{films.fields.titre}}</p></div>
+                    <div  class="col-4 col-md-4 col-lg-4 tab_content"><p>{{films.fields.realisateur }}</p></div>
+                    <div  class="col-3 col-md-3 col-lg-4 tab_content"><p>{{films.fields.date_debut | date : "dd/MM/yy" }}</p></div>
+                  </div>
+                </div>
+
+                <!-- On affiche le numero de page sur lequel est l'utilisateur -->
+                <div class="numero_page">Page {{numero_page}} sur {{listev.len/(end-start)}} </div>
+
+            </div>
+
+      </div>
+
+      <!-- footer pour les boutons permettant de changer de page -->
+      <!-- on incremente les valeurs a chaque click avec ng-click -->
+      <!-- ng-show permet de cacher le bouton précédent lorsqu'on est page 1 -->
+      <div class="row footer">
+        <div class="col-1 col-md-4 col-lg-5"></div>
+        <div class="pages_bt animbt col-5 col-md-2 col-lg-1" ng-show="start!=0" ng-click="start=start-15;end=end-15;numero_page=numero_page-1;" >Precedent</div>
+        <div  class="pages_bt animbt col-5 col-md-2 col-lg-1" ng-click="start=start+15;end=end+15;numero_page=numero_page+1;">Suivant</div>
+        <div class="col-1 col-md-4 col-lg-5"></div>
+      </div>
+
+
+  </body>
+
+</html>

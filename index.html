@@ -1,0 +1,103 @@
+<!DOCTYPE html >
+<html ng-app="liste">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script> <!-- load angular -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js"></script>
+    <script type="text/javascript" src="./vendor/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' href="./css/styles.css" />
+
+    <script type="text/javascript" src="./js/script.js"></script>
+    <title>GeograFilm</title>
+  </head>
+
+  <body>
+
+    <!-- sidenav -->
+    <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href=""><h2>GeograFilm</h2></a>
+    <a id="rowhead_nav"></a>
+    <a href="/film_data/index.html">Carte</a>
+    <a href="/film_data/liste.html">Liste</a>
+    </div>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-md">
+      <button class="navbar-toggler" type="button" onclick="openNav()">
+        <span class="navbar-toggler-icon"><img src="images/grid-world.svg" class="navlogo" alt="Responsive image"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="/film_data/index.html"><img src="images/grid-world.svg" class="navlogo" alt="Responsive image">GeograFilm</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/film_data/index.html"><div class="navbt"><div class="navbtint">Carte</div> </div><span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/film_data/liste.html"><div class="navbt"><div class="navbtint">Liste</div> </div></a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+
+
+    <!-- Main Content -->
+
+
+    <!--espace occupé par le header ( a definir car header fixe )-->
+    <div class="espace_haut"></div>
+
+    <!-- Elements de la page -->
+    <div class="row container_elements" id="contenu_main" >
+      <!-- Carte -->
+      <div class="col-12 col-md-12 col-lg-8">
+        <div id='map' >
+        </div>
+      </div>
+
+      <!-- Panels detail, intensité, nb de films-->
+      <div class="col-12 col-md-12 col-lg-4">
+        <div class="detailpanel" id="slider_one">
+          <h5>Detail</h5>
+          <div class="slider">
+            <input type="range" min="1" max="50" value="25" class="slider sliderdet" id="myRange">
+          </div>
+        </div>
+        <div class="intensitepanel" id="slider_one">
+          <h5>Intensité</h5>
+          <div class="slider">
+            <input type="range" min="1" max="100" value="85" class="slider slideint" id="myRange_deux">
+          </div>
+        </div>
+
+        <div class="nbpanel">
+          <h5>Nombre de films tournés</h5>
+
+          <div class="nb_films" ng-controller="listeViewer as listev">{{listev.len}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chargement Mapbox -->
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic3RlcGhhbmVnY3JkIiwiYSI6ImNqZXNhYmpjdzIyMDMzNHJ0N3FwYWRvMGQifQ.O3yM-ktFIX7_EjrtpXtuxw';
+          var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/dark-v9',
+          center: [2.3433, 48.856667],
+          zoom: 12
+        });
+    </script>
+    <!-- Chargement script de la map -->
+    <script type="text/javascript" src="./js/script_maps.js"></script>
+  </body>
+
+</html>
