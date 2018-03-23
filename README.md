@@ -182,3 +182,7 @@ La directive **ng-submit** n'a pas été utilisée.
 
 Angular 1.2 à été utilisé afin d'avoir une version angular-animate compatible, et en utilisant des liens d'importation de libraire. nous aurions plus utiliser des versions plus récentes mais il aurait fallu installer node.js et donc nous avons fait le choix de rester sur l'ancienne version.
 
+Pour l'affichage de la carte sur la page principale (index.html), nous avons utilisé l'API **Mapbox** (https://www.mapbox.com/). Elle permet de créer & personnaliser rapidement une carte, et d'y placer des données
+avec un fichier GEOJSON.
+
+
