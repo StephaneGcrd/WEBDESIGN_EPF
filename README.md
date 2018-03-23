@@ -1,8 +1,8 @@
 
 # **Projet Webdesign réalisé pour l'EPF**
 
-## Auteurs: **Boris Boéri** et **Stéphane Guichard**
-## *4ème année, Majeure Ingénierie et Numérique*
+Auteurs: **Boris Boéri** et **Stéphane Guichard**
+*4ème année, Majeure Ingénierie et Numérique*
 
 ## **Fonctionalités implémentées**
 
