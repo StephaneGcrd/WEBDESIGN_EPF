@@ -32,9 +32,7 @@ Sur le bouton filtre, on utilise ng-click pour changer la valeur de la variable 
 </a>
 ```
 * **ng-show**
-```
 
-```
 De même que pour ng-if, ng-show nous permet d'afficher ou cacher un élément suivant certaines conditions. Il a été utilisé pour
 afficher ou cacher le bouton précédent suivant le numéro de la page
 ```
@@ -181,5 +179,5 @@ Nous n'avons pas implémenté la directive **ng-submit.**
 
 ## **Informations supplémentaires**
 
-Nous avons utilisé angular 1.2 afin d'avoir une version angular-animate compatible, et en utilisant des liens CDN. nous aurions plus utiliser des versions plus récentes mais il aurait fallu installer node.js et donc nous avons fait le choix de rester sur l'ancienne version.
+Nous avons utilisé angular 1.2 afin d'avoir une version angular-animate compatible, et en utilisant des liens d'import. nous aurions plus utiliser des versions plus récentes mais il aurait fallu installer node.js et donc nous avons fait le choix de rester sur l'ancienne version.
 
