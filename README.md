@@ -16,7 +16,7 @@ Ces deux directives permettent d'indiquer que notre application angular et notre
 Nous avons utilisé ng-if dans liste.html pour afficher nos filtres, ça permet d'afficher les différents filtres disponibles pour notre
 liste si et seulement si l'utilisateur clique sur le bouton filtre.
 
-```
+```html
 <div class="row filters" ng-if="bool">
 ...
 </div>
