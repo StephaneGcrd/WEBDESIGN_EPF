@@ -5,6 +5,8 @@ Auteurs: **Boris Boéri** et **Stéphane Guichard**
 
 *4ème année, Majeure Ingénierie et Numérique*
 
+Le but de ce site est d'afficher des données relatives aux lieux de tournage à Paris, en utilisant les languages HTML,CSS, et Javascript, et en utilisant AngularJS
+
 ## **Fonctionalités implémentées**
 
 * **ng-app et ng-controlleur**
